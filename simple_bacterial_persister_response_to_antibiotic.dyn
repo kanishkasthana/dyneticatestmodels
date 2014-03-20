@@ -1,0 +1,137 @@
+dynetica.system.ReactiveSystem   persister {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation {  }
+}
+
+dynetica.entity.Substance   N {
+ InitialValue { 100000.0}
+Value {1.0706461165030391E-7}
+ Min {4.9E-324}
+ Max {1.7976931348623157E308}
+ X  {202.96462184873957}
+ Y  {326.5913043478261}
+ Annotation { normal, sensitive cells }
+}
+
+dynetica.entity.Substance   P {
+ InitialValue { 10.0}
+Value {9.518305210495023E-6}
+ Min {4.9E-324}
+ Max {1.7976931348623157E308}
+ X  {665.1360504201682}
+ Y  {321.9478260869565}
+ Annotation { persister cells }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 99.99999999999989}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dS {
+ Value { 2.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dP {
+ Value { 0.2}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   a {
+ Value { 0.1}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   b {
+ Value { 0.01}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   un {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   up {
+ Value { 0.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+dynetica.entity.ExpressionVariable   Total {
+ Expression { [N] + [P]}
+ X  {431.58655462184873}
+ Y  {58.81739130434783}
+ Annotation { }
+}
+
+
+dynetica.reaction.ProgressiveReaction   N_decay{
+  stoichiometry { N ->  } 
+  kinetics { dS * [N] } 
+  X  {200.32421728955043}
+  Y  {531.4926626764194}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   P_decay{
+  stoichiometry { P ->  } 
+  kinetics { dP * [P] } 
+  X  {662.495645860979}
+  Y  {537.6839670242455}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   N_to_P{
+  stoichiometry { N -> P } 
+  kinetics { a * [N] } 
+  X  {430.2239978152782}
+  Y  {225.5167426150437}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   P_to_N{
+  stoichiometry { P -> N } 
+  kinetics { b * [P] } 
+  X  {437.0676219449251}
+  Y  {409.59428272839034}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   N_grow{
+  stoichiometry {  -> N } 
+  kinetics { un * [N] } 
+  X  {36.786076159041436}
+  Y  {282.25373535935273}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   P_grow{
+  stoichiometry {  -> P } 
+  kinetics { up * [P] } 
+  X  {829.3498957770977}
+  Y  {278.73114442189797}
+  Annotation {}
+}
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 1011}
+	 height {712}
+	 arrowSize {8.0}
+	 margin {20}
+	 lineWidth {0.5}
+}
+
+}
+

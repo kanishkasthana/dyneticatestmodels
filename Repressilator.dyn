@@ -1,0 +1,188 @@
+dynetica.system.ReactiveSystem   repressilator {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation {  }
+}
+
+dynetica.entity.Substance   p1 {
+ InitialValue { 3.0}
+Value {2.66926525222216}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {278.33349514563093}
+ Y  {85.69440941934944}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   p3 {
+ InitialValue { 1.0}
+Value {4.227643664068021}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {395.72958316519106}
+ Y  {387.90370675019534}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   p2 {
+ InitialValue { 2.0}
+Value {0.6524709284787569}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {811.3146129560613}
+ Y  {292.5761381475667}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   mGFP {
+ InitialValue { 0.0}
+Value {0.07446743048311935}
+ Min {4.9E-324}
+ Max {1.7976931348623157E308}
+ X  {508.40576230492184}
+ Y  {485.76766091051803}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   GFP {
+ InitialValue { 0.0}
+Value {106.01898738586236}
+ Min {4.9E-324}
+ Max {1.7976931348623157E308}
+ X  {582.1532329716064}
+ Y  {584.2019035886256}
+ Annotation {  }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 99.99999999999949}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   a0 {
+ Value { 5.0E-4}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   a {
+ Value { 10.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   n {
+ Value { 3.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dm {
+ Value { 5.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kt {
+ Value { 10.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dg {
+ Value { 0.05}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+
+dynetica.reaction.ProgressiveReaction   p1_make{
+  stoichiometry {  -> p1 } 
+  kinetics { a0 + a / (1.0 + [p3] ^ n) } 
+  X  {242.3481454148097}
+  Y  {244.00645858796096}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   p1_decay{
+  stoichiometry { p1 ->  } 
+  kinetics { [p1] } 
+  X  {93.72679464738326}
+  Y  {126.15052728331061}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   p2_make{
+  stoichiometry {  -> p2 } 
+  kinetics { a0 + a / (1.0 + [p1] ^ n) } 
+  X  {616.5378046519432}
+  Y  {121.48707492756193}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   p2_decay{
+  stoichiometry { p2 ->  } 
+  kinetics { [p2] } 
+  X  {826.1033120164568}
+  Y  {504.3388499084366}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   p3_make{
+  stoichiometry {  -> p3 } 
+  kinetics { a0 + a / (1.0 + [p2] ^ n) } 
+  X  {622.2699165542934}
+  Y  {382.0096587257863}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   p3_decay{
+  stoichiometry { p3 ->  } 
+  kinetics { [p3] } 
+  X  {117.20077788435414}
+  Y  {356.1675561556405}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   mGFP_transcribe{
+  stoichiometry {  -> mGFP } 
+  kinetics { a0 + a / (1.0 + [p3] ^ n) } 
+  X  {350.9266522805704}
+  Y  {471.8656517593694}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   mGFP_decay{
+  stoichiometry { mGFP ->  } 
+  kinetics { dm * [mGFP] } 
+  X  {598.8834223362219}
+  Y  {522.7848873499039}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   GFP_prod{
+  stoichiometry {  -> GFP } 
+  kinetics { kt * [mGFP] } 
+  X  {483.66774496565404}
+  Y  {543.4715874074438}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   GFP_decay{
+  stoichiometry { GFP ->  } 
+  kinetics { dg * [GFP] } 
+  X  {702.1367152751484}
+  Y  {592.9330286102502}
+  Annotation {}
+}
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 970}
+	 height {646}
+	 arrowSize {8.0}
+	 margin {20}
+	 lineWidth {0.5}
+}
+
+}
+

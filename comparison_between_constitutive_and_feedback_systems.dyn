@@ -1,0 +1,147 @@
+dynetica.system.ReactiveSystem   comparision_between_constitutive_and_feedbacks {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation {  }
+}
+
+dynetica.entity.Substance   R {
+ InitialValue { 0.0}
+Value {109.04565245930269}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {378.7765673150272}
+ Y  {165.5090246423326}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   C {
+ InitialValue { 0.0}
+Value {341.4307417385638}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {376.11605375341725}
+ Y  {43.0}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   A {
+ InitialValue { 0.0}
+Value {349.484516680603}
+ Min {4.9E-324}
+ Max {1.7976931348623157E308}
+ X  {380.6199282652436}
+ Y  {295.24360971325757}
+ Annotation {  }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 99.9999999999986}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kd {
+ Value { 0.1}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k0 {
+ Value { 34.1446244}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kmax {
+ Value { 1200.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   K {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   n {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kA {
+ Value { 35.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kbasal {
+ Value { 0.05}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+
+dynetica.reaction.ProgressiveReaction   R_decay{
+  stoichiometry { R ->  } 
+  kinetics { kd * [R] } 
+  X  {574.0268749152109}
+  Y  {164.68794229708834}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   R_make{
+  stoichiometry {  -> R } 
+  kinetics { (kmax * K ^ n) / (K ^ n + [R] ^ n) } 
+  X  {174.78241736792663}
+  Y  {170.2141897455119}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   C_make{
+  stoichiometry {  -> C } 
+  kinetics { k0 } 
+  X  {176.81718268416225}
+  Y  {50.87913493324789}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   C_decay{
+  stoichiometry { C ->  } 
+  kinetics { kd * [C] } 
+  X  {565.9868942150956}
+  Y  {43.95957474417144}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   A_decay{
+  stoichiometry { A ->  } 
+  kinetics { kd * [A] } 
+  X  {589.5942583151597}
+  Y  {301.4752572909042}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   A_make{
+  stoichiometry {  -> A } 
+  kinetics { (kA * [A] ^ n) / (K ^ n + [A] ^ n) + kbasal } 
+  X  {177.28543712335315}
+  Y  {302.53196097762634}
+  Annotation {}
+}
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 880}
+	 height {424}
+	 arrowSize {8.0}
+	 margin {20}
+	 lineWidth {0.5}
+}
+
+}
+

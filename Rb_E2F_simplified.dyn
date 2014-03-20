@@ -1,0 +1,364 @@
+dynetica.system.ReactiveSystem   E2F {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation { To see basic bistability. Run the simulation with a total time span of 200hrs
+The basic simplifying assumption was that binding of 
+Rb and E2F is infinitely fast, such that Rb plays a role
+in titrating out E2F. As a consequency, the active 
+concentration of E2F is [E2F] - [Rb] }
+}
+
+dynetica.entity.Substance   Myc {
+ InitialValue { 0.0}
+Value {0.2857142857142862}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {145.08077555175555}
+ Y  {281.769987699877}
+ Annotation { 0 }
+}
+
+dynetica.entity.Substance   E2F {
+ InitialValue { 0.0}
+Value {1.2945205796645096}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {143.7272727272727}
+ Y  {595.0738007380074}
+ Annotation { 0 }
+}
+
+dynetica.entity.Substance   CycD {
+ InitialValue { 0.0}
+Value {0.22524590163934452}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {582.2797202797203}
+ Y  {187.16851168511684}
+ Annotation { 0 }
+}
+
+dynetica.entity.Substance   Rb {
+ InitialValue { 0.2}
+Value {0.11624143900049162}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {335.1190591045491}
+ Y  {367.1820418204182}
+ Annotation { uM }
+}
+
+dynetica.entity.Substance   CycE {
+ InitialValue { 0.0}
+Value {0.2956906433658054}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {518.708041958042}
+ Y  {614.40098400984}
+ Annotation { 0 }
+}
+
+dynetica.entity.Substance   Rb_p {
+ InitialValue { 0.0}
+Value {0.08255888524421133}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {713.1083916083917}
+ Y  {366.19926199261994}
+ Annotation { 0 }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 199.9999999999978}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   Rpoint {
+ Value { 50.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kE2F {
+ Value { 0.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kRb_p {
+ Value { 18.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { Commonly used value is about 3600/hr. Reduced 100 fold (along with dephosphorylation rate constant) to reduce stiffness of model without changing its overall dynamics.}
+}
+
+dynetica.entity.Parameter   kCycE {
+ Value { 0.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { assumed to be the same as kE2F}
+}
+
+dynetica.entity.Parameter   kRb_p2 {
+ Value { 18.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { 1/hr}
+}
+
+dynetica.entity.Parameter   kCycD {
+ Value { 0.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   d_CycD {
+ Value { 1.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { CycD half-life = 25-30 min
+This leads to a half activation time of 25-30min}
+}
+
+dynetica.entity.Parameter   d_CycE {
+ Value { 1.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   d_E2F {
+ Value { 0.25}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { half life = 2-3 hrs}
+}
+
+dynetica.entity.Parameter   K_Myc {
+ Value { 0.15}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { K_Myc increase makes higher dose requirement to start E2F in dose response}
+}
+
+dynetica.entity.Parameter   K_E2F {
+ Value { 0.15}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { K_E2F needs to keep big to avoid E2F increase over long time period under low level serum}
+}
+
+dynetica.entity.Parameter   d_Myc {
+ Value { 0.7}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { Myc half life = 1hr (upon serum stimulation)
+This also leads to a half activation time of 1hr}
+}
+
+dynetica.entity.Parameter   K_Serum {
+ Value { 2.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kMyc {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { uM/hr}
+}
+
+dynetica.entity.Parameter   kRb_un_p {
+ Value { 3.6}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { 720 uM/hr; assuming the dephosphorylation rate constant to be 1/s
+and with the phosphotase concentration 
+of 200nM.
+However, we use 10 fold smaller value to
+reduce stiffness of the model.}
+}
+
+dynetica.entity.Parameter   K_p {
+ Value { 0.2}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   K_D {
+ Value { 0.92}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { uM; from Pan Sun etal 1998}
+}
+
+dynetica.entity.Parameter   K_E {
+ Value { 0.92}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { uM}
+}
+
+dynetica.entity.Parameter   low {
+ Value { 0.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   hi {
+ Value { 10.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   n {
+ Value { 2.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   FreeE2F {
+ Value { 0.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kbasal {
+ Value { 0.05}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   Na {
+ Value { 6.02E23}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   V {
+ Value { 1.0E-14}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+dynetica.entity.ExpressionVariable   Serum {
+ Expression { low + (hi - low) * pulse(Time, 70.0, 70.0 + Rpoint)}
+ X  {300.85632730732635}
+ Y  {46.0}
+ Annotation { low: low serum
+hi: hi serum}
+}
+
+dynetica.entity.ExpressionVariable   Free_E2F {
+ Expression { max([E2F] - [Rb], 0.0)}
+ X  {278.79352997145577}
+ Y  {497.0}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   TotalRb {
+ Expression { [Rb] + [Rb_p]}
+ X  {506.44148430066605}
+ Y  {357.0}
+ Annotation { this is set to check conservation of Rb and Rb_p.
+If the phosphorylation and dephosphorylation rate constants are large, very small time steps have to be used to ensure accuracy of computation.}
+}
+
+
+dynetica.reaction.ProgressiveReaction   E2Fmake{
+  stoichiometry {  -> E2F } 
+  kinetics { (kE2F * [Myc] * Free_E2F) / (K_Myc + [Myc]) / (K_E2F + Free_E2F) + (kbasal * [Myc]) / (K_Myc + [Myc]) } 
+  X  {139.96043228892896}
+  Y  {416.04305043050425}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   CycD_make{
+  stoichiometry {  -> CycD } 
+  kinetics { (kCycD * [Myc]) / (K_Myc + [Myc]) + (0.1 * kCycD * Serum) / (K_Serum + Serum) } 
+  X  {405.38461538461536}
+  Y  {189.2029520295203}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   Rb_phos{
+  stoichiometry { Rb -> Rb_p } 
+  kinetics { (kRb_p * [CycD] * [Rb]) / (K_D + [Rb]) + (kRb_p2 * [CycE] * [Rb]) / (K_E + [Rb]) } 
+  X  {508.5734265734266}
+  Y  {451.6457564575646}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   CycE_make{
+  stoichiometry {  -> CycE } 
+  kinetics { (kCycE * Free_E2F) / (K_E2F + Free_E2F) } 
+  X  {359.31818181818187}
+  Y  {615.4182041820418}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   CycD_decay{
+  stoichiometry { CycD ->  } 
+  kinetics { d_CycD * [CycD] } 
+  X  {707.5804195804197}
+  Y  {189.2029520295203}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   CycE_decay{
+  stoichiometry { CycE ->  } 
+  kinetics { d_CycE * [CycE] } 
+  X  {669.805944055944}
+  Y  {617.4526445264454}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   E2F_decay{
+  stoichiometry { E2F ->  } 
+  kinetics { d_E2F * [E2F] } 
+  X  {140.96328671328672}
+  Y  {710.019680196802}
+  Annotation {If D_E2F increases, E2F after reach its peak expression, will decrease instead of staying plateau}
+}
+dynetica.reaction.ProgressiveReaction   Myc_make{
+  stoichiometry {  -> Myc } 
+  kinetics { (kMyc * Serum) / (K_Serum + Serum) } 
+  X  {148.25239033088698}
+  Y  {137.32472324723247}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   Myc_decay{
+  stoichiometry { Myc ->  } 
+  kinetics { d_Myc * [Myc] } 
+  X  {27.745931280897977}
+  Y  {235.78720787207874}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   Rb_un_p{
+  stoichiometry { Rb_p -> Rb } 
+  kinetics { (kRb_un_p * [Rb_p]) / (K_p + [Rb_p]) } 
+  X  {506.7307692307693}
+  Y  {285.83886838868386}
+  Annotation {}
+}
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 1054}
+	 height {827}
+	 arrowSize {11.52}
+	 margin {20}
+	 lineWidth {1.2800001}
+}
+
+}
+

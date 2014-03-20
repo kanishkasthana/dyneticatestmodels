@@ -1,0 +1,306 @@
+dynetica.system.ReactiveSystem   DictyosteliumModel {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation {  }
+}
+
+dynetica.entity.Substance   ACA {
+ InitialValue { 60.0}
+Value {90.3275486979832}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {337.71689399844104}
+ Y  {98.5721153846154}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   ERK2 {
+ InitialValue { 60.0}
+Value {54.07177497288824}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {814.8390923241885}
+ Y  {131.25014161765807}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   REGA {
+ InitialValue { 60.0}
+Value {108.67492787682686}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {423.2658161980528}
+ Y  {553.4191125102436}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   PKA {
+ InitialValue { 60.0}
+Value {71.69047233268014}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {395.4719839843599}
+ Y  {415.9950506900342}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   CAR1 {
+ InitialValue { 60.0}
+Value {119.82869341996214}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {609.5471879829321}
+ Y  {279.3453105666796}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   cAMPi {
+ InitialValue { 60.0}
+Value {27.99737587886506}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {113.47643403426706}
+ Y  {252.87037002711327}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   cAMPe {
+ InitialValue { 6.0}
+Value {13.26786185464616}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {434.55437635694847}
+ Y  {234.89164920365593}
+ Annotation {  }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 99.99999999999966}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k1 {
+ Value { 1.4}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k2 {
+ Value { 0.9}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k5 {
+ Value { 0.6}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k3 {
+ Value { 2.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k4 {
+ Value { 1.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k6 {
+ Value { 0.8}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k7 {
+ Value { 2.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k8 {
+ Value { 1.3}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k9 {
+ Value { 0.3}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k10 {
+ Value { 0.8}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k11 {
+ Value { 0.7}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k12 {
+ Value { 4.9}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k13 {
+ Value { 18.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k14 {
+ Value { 1.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   Na {
+ Value { 6.023E23}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   V {
+ Value { 1.0E-22}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+
+dynetica.reaction.ProgressiveReaction   p_ACA{
+  stoichiometry {  -> ACA } 
+  kinetics { k1 * [ERK2] } 
+  X  {661.9059317808543}
+  Y  {20.404040404040405}
+  Annotation {}
+}
+dynetica.reaction.Decay   d_ACA {
+  Substrate { ACA}
+ k {k2}
+  X  {204.92937046571353}
+  Y  {29.41203835618252}
+}
+
+dynetica.reaction.ProgressiveReaction   p_PKA{
+  stoichiometry {  -> PKA } 
+  kinetics { k3 * [cAMPi] } 
+  X  {282.11865041625083}
+  Y  {355.7193173303304}
+  Annotation {}
+}
+dynetica.reaction.Decay   d_PKA {
+  Substrate { PKA}
+ k {k4}
+  X  {612.2748384197113}
+  Y  {481.2934904899712}
+}
+
+dynetica.reaction.ProgressiveReaction   p_ERK2{
+  stoichiometry {  -> ERK2 } 
+  kinetics { k5 * [CAR1] } 
+  X  {684.1875990063631}
+  Y  {212.81174041975677}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   d_ERK2{
+  stoichiometry { ERK2 ->  } 
+  kinetics { (k6 * [ERK2] * [PKA]) / (Na * V) } 
+  X  {741.0523481317582}
+  Y  {351.8173979771472}
+  Annotation {}
+}
+dynetica.reaction.Generator   p_REGA {
+ Product { REGA}
+ Kinetics { k7 * Na * V}
+  X  {440.620856422307}
+  Y  {651.2286867655222}
+}
+
+dynetica.reaction.Decay   d_REGA {
+  Substrate { REGA}
+ k {(k8 * [ERK2]) / (Na * V)}
+  X  {906.7877651302109}
+  Y  {484.32223966904024}
+}
+
+dynetica.reaction.Generator   p_cAMPi {
+ Product { cAMPi}
+ Kinetics { k9 * [ACA]}
+  X  {141.6300057193602}
+  Y  {119.00708725403669}
+}
+
+dynetica.reaction.Decay   d_cAMPi {
+  Substrate { cAMPi}
+ k {(k10 * [REGA]) / (Na * V)}
+  X  {178.4362989212394}
+  Y  {468.5475095927466}
+}
+
+dynetica.reaction.ProgressiveReaction   p_cAMPe{
+  stoichiometry {  -> cAMPe } 
+  kinetics { k11 * [ACA] } 
+  X  {422.08600126511595}
+  Y  {154.31667072869115}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   d_cAMPe{
+  stoichiometry { cAMPe ->  } 
+  kinetics { k12 * [cAMPe] } 
+  X  {288.6436768097851}
+  Y  {236.21625586900677}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   p_CAR1{
+  stoichiometry {  -> CAR1 } 
+  kinetics { k13 * [cAMPe] } 
+  X  {545.0885123878928}
+  Y  {236.0705920806316}
+  Annotation {}
+}
+dynetica.reaction.Decay   d_CAR1 {
+  Substrate { CAR1}
+ k {(k14 * [PKA]) / (Na * V)}
+  X  {433.49778673176644}
+  Y  {343.6424638866935}
+}
+
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 1201}
+	 height {707}
+	 arrowSize {8.0}
+	 margin {20}
+	 lineWidth {0.5}
+}
+
+}
+

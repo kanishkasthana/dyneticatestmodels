@@ -1,0 +1,297 @@
+dynetica.system.ReactiveSystem   popctrl_with_continuous_dilution {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation { The population control circuit. Assuming constant 
+dilution of culture and signal. }
+}
+
+dynetica.entity.Substance   ccdB {
+ InitialValue { 0.0}
+Value {124.3085366170034}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {813.0806541582152}
+ Y  {278.73661640562835}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   VAI {
+ InitialValue { 0.0}
+Value {44.876543734980054}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {196.74596855983788}
+ Y  {372.9290896462448}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   Cell {
+ InitialValue { 1.0E7}
+Value {6.562627568829752E7}
+ Min {0.0}
+ Max {1.0E100}
+ X  {138.21853448275877}
+ Y  {97.39511784655059}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   Cell_OFF {
+ InitialValue { 1.0E7}
+Value {2.999999999999978E9}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {1070.0282917139612}
+ Y  {324.5}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   R {
+ InitialValue { 0.0}
+Value {78.30201602374515}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {521.9051470588234}
+ Y  {512.5717409430746}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   ghost {
+ InitialValue { 0.0}
+Value {1.7217804835825425E8}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {623.5820993914807}
+ Y  {47.51729106628248}
+ Annotation {  }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 100.0000000000001}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   ccdB_synthesis_rate {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   growth_rate {
+ Value { 0.7}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   death_rate {
+ Value { 0.0040}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   VAI_synthesis_rate {
+ Value { 4.0E-7}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   VAI_decay_rate {
+ Value { 0.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { default: 0.1}
+}
+
+dynetica.entity.Parameter   ccdB_decay_rate {
+ Value { 0.7}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   a {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   pE {
+ Value { 0.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   Nm {
+ Value { 3.0E9}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   alpha {
+ Value { 0.1}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   b {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   c {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   D {
+ Value { 0.2}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kR {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dR {
+ Value { 0.7}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   T0 {
+ Value { 5.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   amplitude {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+dynetica.entity.ExpressionVariable   Input {
+ Expression { 1.0 + amplitude * step(sin((Time * 2.0 * 3.14159265) / T0), 0.0)}
+ X  {286.16283348666053}
+ Y  {234.0}
+ Annotation { This can be set to 0.}
+}
+
+
+dynetica.reaction.ProgressiveReaction   ccdB_make{
+  stoichiometry {  -> ccdB } 
+  kinetics { ccdB_synthesis_rate * [R] ^ a } 
+  X  {514.0235692050869}
+  Y  {326.30280268989213}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   Cell_grow{
+  stoichiometry {  -> Cell } 
+  kinetics { growth_rate * [Cell] * (1.0 - [Cell] / Nm) } 
+  X  {256.37282335182397}
+  Y  {175.73725749668807}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   Cell_death{
+  stoichiometry { Cell -> ghost } 
+  kinetics { [Cell] * death_rate * [ccdB] ^ 1.0 } 
+  X  {356.7895903845845}
+  Y  {60.123919308357344}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   VAI_decay{
+  stoichiometry { VAI ->  } 
+  kinetics { VAI_decay_rate * [VAI] } 
+  X  {35.81466297778951}
+  Y  {406.13738227276434}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   ccdB_decay{
+  stoichiometry { ccdB ->  } 
+  kinetics { ccdB_decay_rate * [ccdB] } 
+  X  {917.0885363924793}
+  Y  {383.74543901418065}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   VAI_make{
+  stoichiometry {  -> VAI } 
+  kinetics { VAI_synthesis_rate * [Cell] * Input } 
+  X  {81.06646613247227}
+  Y  {236.84400623491553}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   OFF_growth{
+  stoichiometry {  -> Cell_OFF } 
+  kinetics { growth_rate * [Cell_OFF] * (1.0 - [Cell_OFF] / Nm) } 
+  X  {1001.3445264878453}
+  Y  {116.6407281327934}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   R_make{
+  stoichiometry {  -> R } 
+  kinetics { kR * [VAI] } 
+  X  {306.27430465860266}
+  Y  {537.9787603356897}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   R_decay{
+  stoichiometry { R ->  } 
+  kinetics { dR * [R] } 
+  X  {668.7056397198622}
+  Y  {602.7087246876292}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   Cell_dilution{
+  stoichiometry { Cell ->  } 
+  kinetics { D * [Cell] } 
+  X  {79.22536176194912}
+  Y  {47.47394290442379}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   VAI_dilution{
+  stoichiometry { VAI ->  } 
+  kinetics { D * [VAI] } 
+  X  {118.09918184859845}
+  Y  {527.582253060994}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   ghost_dilution{
+  stoichiometry { ghost ->  } 
+  kinetics { D * [ghost] } 
+  X  {853.9548315221095}
+  Y  {54.107377892468946}
+  Annotation {}
+}
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 1201}
+	 height {673}
+	 arrowSize {8.0}
+	 margin {20}
+	 lineWidth {0.5}
+}
+
+}
+

@@ -1,0 +1,225 @@
+dynetica.system.ModularSystem   dynetica_expressions {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation { This file provides an overview of different mathematical expressions 
+implemented in Dynetica.
+They are illustrated using ExpressionVariables. Same mathematical
+expressions can be defined using parameters and substances, which
+is more typical use of these expressions.
+To check out how the work, run a "simulation" (try using high resolution 
+simulation with RK algorithm, and a short time window 0-10). Then click plot. 
+You can then see how different variables change with Time.
+When creating ExpressionVariables that depend on other
+expressionVariables, always create the dependent variables later. 
+Otherwise you can generate Dynetica input files that are not
+automatically readable (you can fix it by changing the order of 
+the variables by editing the input files with a text editor). }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 9.999999999999831}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   pulse_duration {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   pulse_period {
+ Value { 2.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   doublingTime {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+dynetica.entity.ExpressionVariable   ceiling {
+ Expression { ceil(Time)}
+ X  {110.48424455879183}
+ Y  {86.73278677919109}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   exponential {
+ Expression { exp(Time)}
+ X  {307.89136586760964}
+ Y  {75.57819707679064}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   squareRoot {
+ Expression { sqrt(Time)}
+ X  {586.9553514656719}
+ Y  {81.4321040482249}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   logarithm {
+ Expression { log(Time)}
+ X  {589.6107625219087}
+ Y  {205.69512399759174}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   floor_time {
+ Expression { floor(Time)}
+ X  {106.11312350901403}
+ Y  {201.04326561434047}
+ Annotation { returns the largest integer smaller than Time (but converted to double in dynetica)}
+}
+
+dynetica.entity.ExpressionVariable   rounding {
+ Expression { round(Time)}
+ X  {756.3651675881993}
+ Y  {78.58448302727172}
+ Annotation { round Time to its nearest integer (but converted to double)}
+}
+
+dynetica.entity.ExpressionVariable   sine_function {
+ Expression { sin(Time)}
+ X  {331.0721230686955}
+ Y  {200.84268654221148}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   cosine_function {
+ Expression { cos(Time)}
+ X  {756.5385905542548}
+ Y  {193.61676212971693}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   triggerAt_function {
+ Expression { triggerAt(0.0, logarithm, Time)}
+ X  {590.9183986162672}
+ Y  {301.7516232485126}
+ Annotation { triggerAt (value1, condition, value2)  returns value2 when condition changes from <0 to >0. It is useful to record the time when certain event happens during simulation.}
+}
+
+dynetica.entity.ExpressionVariable   step_function {
+ Expression { step(sine_function, 0.0)}
+ X  {332.0366506685545}
+ Y  {305.48957400801163}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   a_single_pulse {
+ Expression { pulse(Time, 2.0, 4.0)}
+ X  {104.10176738749355}
+ Y  {304.9689046872595}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   many_pulses {
+ Expression { pulses(Time, 1.0, pulse_period, pulse_duration)}
+ X  {101.73783652990801}
+ Y  {408.56040443547283}
+ Annotation { the first argument should always be Time (reserved variable in Dynetica) for typical uses (you can insert other variables here but outcomes could be weird). 
+the 2nd, 3rd, and 4th arguments represent the start of the pulses, period of each  cycle, and duration of each pulse. 
+If duration >= period, you'll just get a constant value.}
+}
+
+dynetica.entity.ExpressionVariable   absolute_values {
+ Expression { abs(cosine_function)}
+ X  {757.6042889232945}
+ Y  {296.0231539744887}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   maximum {
+ Expression { max(squareRoot, logarithm)}
+ X  {497.8645806183016}
+ Y  {152.72635574286096}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   tangent {
+ Expression { tan(Time)}
+ X  {329.19702579307796}
+ Y  {395.3301890402993}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   minimum {
+ Expression { min(squareRoot, logarithm)}
+ X  {664.4715350446755}
+ Y  {146.42059469365483}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   hill_function {
+ Expression { hill(Time, 10.0, 5.0)}
+ X  {432.4348336317915}
+ Y  {224.50604264485304}
+ Annotation { hill(x, n, Kx) = x^n / (x^n + Kx^n)}
+}
+
+dynetica.entity.ExpressionVariable   normal_distribution {
+ Expression { Time * (1.0 + normal())}
+ X  {535.1422706991887}
+ Y  {411.52247604024876}
+ Annotation { normal() returns a random number following normal distribution with mean of 0.0 and variance of 1.}
+}
+
+dynetica.entity.ExpressionVariable   uniform_distribution {
+ Expression { rand()}
+ X  {712.8063894943945}
+ Y  {413.6752449329814}
+ Annotation { returns a random number between 0 and 1, following uniform distribution}
+}
+
+dynetica.entity.ExpressionVariable   maximum_of_multiple_variables {
+ Expression { max(ceiling, exponential, squareRoot)}
+ X  {307.82750127320185}
+ Y  {25.393321983466247}
+ Annotation { this returns the maximum value of a list (of arbitrary length) of variables.
+There's a bug in the display at the moment. All input variables should connect to this function.}
+}
+
+dynetica.entity.ExpressionVariable   minimum_of_multiple_variables {
+ Expression { min(ceiling, exponential, squareRoot)}
+ X  {307.8882958071897}
+ Y  {127.23716608805309}
+ Annotation { }
+}
+
+dynetica.entity.ExpressionVariable   cell_Volume {
+ Expression { exp((Time / doublingTime - floor(Time / doublingTime)) * 0.6931471805599453)}
+ X  {318.087548703722}
+ Y  {477.73207186928056}
+ Annotation { This illustrates the implementation of periodic cell division. Each cell grows exponentially (the first term in the exponent) but divides periodically (period = doublingTime). 
+The last constant is simply log(2.0) --> dynetica automatically did the calculation the first time it saw the expression.}
+}
+
+dynetica.entity.ExpressionVariable   cell_Volume_2 {
+ Expression { 2.0 ^ (Time / doublingTime - floor(Time / doublingTime))}
+ X  {437.74553711665806}
+ Y  {482.10035096314033}
+ Annotation { same as cell_Volume, but illustrating the use of power operation (^)}
+}
+
+
+
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 904}
+	 height {552}
+	 arrowSize {8.0}
+	 margin {20}
+	 lineWidth {0.5}
+}
+
+}
+

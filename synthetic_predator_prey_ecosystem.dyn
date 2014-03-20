@@ -1,0 +1,507 @@
+dynetica.system.ReactiveSystem   Prey_predator_oscillator_with_continuous_dilution {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation {  }
+}
+
+dynetica.entity.Substance   B1 {
+ InitialValue { 0.0}
+Value {0.3054909779002863}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {359.0002880662302}
+ Y  {123.00767261927268}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   B2 {
+ InitialValue { 0.0}
+Value {68.93450094364975}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {438.487089139877}
+ Y  {597.7079980988894}
+ Annotation { The level of ccdB in prey }
+}
+
+dynetica.entity.Substance   S1 {
+ InitialValue { 0.0}
+Value {363.5905619061551}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {111.15195147131763}
+ Y  {405.55365201475337}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   S2 {
+ InitialValue { 0.0}
+Value {49.79050818606134}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {702.0419478415729}
+ Y  {428.4993275560129}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   predator {
+ InitialValue { 2.0E8}
+Value {4.632558079005888E8}
+ Min {0.0}
+ Max {1.0E100}
+ X  {275.6722249861461}
+ Y  {265.8662315261248}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   prey {
+ InitialValue { 2.0E8}
+Value {3.9066651056400245E8}
+ Min {0.0}
+ Max {1.0E100}
+ X  {625.4482512749402}
+ Y  {277.27786177104366}
+ Annotation { The density of cell type 2. In a liquid culture, }
+}
+
+dynetica.entity.Substance   A {
+ InitialValue { 0.0}
+Value {105.17484352227231}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {585.4964108569238}
+ Y  {226.55375608644496}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   C {
+ InitialValue { 0.0}
+Value {99.80095086481344}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {662.3716610532756}
+ Y  {116.84363990080162}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   dead_predator {
+ InitialValue { 0.0}
+Value {4.622799180846782E10}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {145.28389279284505}
+ Y  {171.89792244933727}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   dead_prey {
+ InitialValue { 0.0}
+Value {2.1090586445719864E10}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {882.0120033068948}
+ Y  {368.33873027922914}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   LasR {
+ InitialValue { 0.0}
+Value {249.74088034510058}
+ Min {4.9E-324}
+ Max {1.7976931348623157E308}
+ X  {399.8062454510798}
+ Y  {481.9295592017435}
+ Annotation {  }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 999.9999999999914}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   u1 {
+ Value { 0.8}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { growth rate of predator}
+}
+
+dynetica.entity.Parameter   u2 {
+ Value { 0.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kS1 {
+ Value { 2.0E-7}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kB2 {
+ Value { 0.05}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dB {
+ Value { 1.2}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kS2 {
+ Value { 8.0E-8}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kB1 {
+ Value { 200.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   d1 {
+ Value { 0.0050}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   d2 {
+ Value { 0.0030}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dS2 {
+ Value { 0.4}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dS1 {
+ Value { 0.1}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kA {
+ Value { 10.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dA {
+ Value { 3.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kAB {
+ Value { 5.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kC {
+ Value { 0.01}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dC {
+ Value { 2.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   c {
+ Value { 0.1}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   D {
+ Value { 0.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   PI {
+ Value { 3.141592653589793}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dT {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dT0 {
+ Value { 0.0050}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   alpha {
+ Value { 0.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kcross {
+ Value { 0.2}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   Nm {
+ Value { 1.0E9}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   dR {
+ Value { 1.2}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   klasR {
+ Value { 0.2}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   n {
+ Value { 1.5}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   Ks1 {
+ Value { 20.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+
+dynetica.reaction.ProgressiveReaction   predator_grow{
+  stoichiometry {  -> predator } 
+  kinetics { u1 * [predator] * (1.0 - ([prey] + [predator]) / Nm) } 
+  X  {401.88568968159166}
+  Y  {242.84510243569835}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   predator_die{
+  stoichiometry { predator -> dead_predator } 
+  kinetics { d1 * [predator] * [B1] } 
+  X  {278.22076034480017}
+  Y  {199.94764603434186}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   prey_grow{
+  stoichiometry {  -> prey } 
+  kinetics { u2 * [prey] * (1.0 - ([prey] + [predator]) / Nm) } 
+  X  {513.6131278608118}
+  Y  {326.54230081228536}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   prey_die{
+  stoichiometry { prey -> dead_prey } 
+  kinetics { d2 * [prey] * [B2] } 
+  X  {818.4768126449471}
+  Y  {301.5740248815093}
+  Annotation {The decay of type 2 cell. Here I'm assuming that the death rate the proporitional to the level of the lysis protein.}
+}
+dynetica.reaction.ProgressiveReaction   S1_make{
+  stoichiometry {  -> S1 } 
+  kinetics { kS1 * u1 * ([predator] + alpha * [dead_predator]) } 
+  X  {87.10882378492005}
+  Y  {247.778772244321}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   B2_decay{
+  stoichiometry { B2 ->  } 
+  kinetics { dB * u2 * [B2] } 
+  X  {539.6041603502921}
+  Y  {656.0384345319659}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   B1_decay{
+  stoichiometry { B1 ->  } 
+  kinetics { dB * u1 * [B1] } 
+  X  {282.7185900767051}
+  Y  {66.82718525463879}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   S2_make{
+  stoichiometry {  -> S2 } 
+  kinetics { kS2 * u2 * ([prey] + alpha * [dead_prey]) } 
+  X  {774.2265938746905}
+  Y  {360.77523932576554}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   B1_make{
+  stoichiometry {  -> B1 } 
+  kinetics { kB1 * u1 } 
+  X  {379.57065515813565}
+  Y  {37.23824178710976}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   S2_decay{
+  stoichiometry { S2 ->  } 
+  kinetics { dS2 * [S2] } 
+  X  {770.3114835616664}
+  Y  {492.8908337330167}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   S1_decay{
+  stoichiometry { S1 ->  } 
+  kinetics { dS1 * [S1] } 
+  X  {82.61256862502427}
+  Y  {498.01806418258275}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   A_make{
+  stoichiometry {  -> A } 
+  kinetics { kA * u1 * [S2] } 
+  X  {578.9920523882106}
+  Y  {369.48599291189106}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   A_decay{
+  stoichiometry { A ->  } 
+  kinetics { dA * u1 * [A] } 
+  X  {647.666084952566}
+  Y  {166.84146556062618}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   AB_bind{
+  stoichiometry { A + B1 -> C } 
+  kinetics { kAB * [A] * [B1] } 
+  X  {547.2277504926776}
+  Y  {55.7563038590154}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   AB_unbind{
+  stoichiometry { C -> A+B1 } 
+  kinetics { kC * [C] } 
+  X  {437.7998022185874}
+  Y  {168.99348957576743}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   C_decay{
+  stoichiometry { C ->  } 
+  kinetics { dC * u1 * [C] } 
+  X  {750.0015971510765}
+  Y  {67.04527790636077}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   predator_dilution{
+  stoichiometry { predator ->  } 
+  kinetics { D * [predator] } 
+  X  {361.2879312433934}
+  Y  {335.69451993986655}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   prey_dilution{
+  stoichiometry { prey ->  } 
+  kinetics { D * [prey] } 
+  X  {757.8919197842283}
+  Y  {215.87010714304225}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   S1_dilution{
+  stoichiometry { S1 ->  } 
+  kinetics { D * [S1] } 
+  X  {205.082440704515}
+  Y  {347.38598793552165}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   S2_dilution{
+  stoichiometry { S2 ->  } 
+  kinetics { D * [S2] } 
+  X  {657.226429196089}
+  Y  {493.95683506377054}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   dead_predator_dilution{
+  stoichiometry { dead_predator ->  } 
+  kinetics { D * [dead_predator] } 
+  X  {73.5605547097547}
+  Y  {69.12369655171337}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   dead_prey_dilution{
+  stoichiometry { dead_prey ->  } 
+  kinetics { D * [dead_prey] } 
+  X  {902.1993552177574}
+  Y  {511.2241644427818}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   B2_make_by_A2{
+  stoichiometry {  -> B2 } 
+  kinetics { klasR * [LasR] } 
+  X  {411.7866216238812}
+  Y  {533.3067004383644}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   R_activation{
+  stoichiometry {  -> LasR } 
+  kinetics { kcross * [S2] + kB2 * u2 * [S1] ^ n } 
+  X  {374.6879069560246}
+  Y  {433.12489870978953}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   R_decay{
+  stoichiometry { LasR ->  } 
+  kinetics { dR * u2 * [LasR] } 
+  X  {250.34057338327895}
+  Y  {515.5954344728403}
+  Annotation {}
+}
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 1011}
+	 height {706}
+	 arrowSize {8.0}
+	 margin {20}
+	 lineWidth {0.5}
+}
+
+}
+

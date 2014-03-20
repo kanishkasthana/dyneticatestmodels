@@ -1,0 +1,204 @@
+dynetica.system.ReactiveSystem   NF_with_time_delay {
+
+dynetica.entity.Annotation   SystemInformation {
+ Annotation {  }
+}
+
+dynetica.entity.Substance   R {
+ InitialValue { 0.0}
+Value {36.36907067650248}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {545.2202937249664}
+ Y  {120.63828514889182}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   R1 {
+ InitialValue { 250.0}
+Value {266.96465234114805}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {749.7102803738318}
+ Y  {423.31236897274647}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   mR {
+ InitialValue { 0.0}
+Value {0.912501489250291}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {325.18958611481975}
+ Y  {325.17886093640783}
+ Annotation {  }
+}
+
+dynetica.entity.Substance   mR1 {
+ InitialValue { 0.0}
+Value {5.79586497967674}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ X  {498.59813084112153}
+ Y  {513.8672704066637}
+ Annotation {  }
+}
+
+
+dynetica.entity.SimulationTimer   Time {
+ Value { 399.99999999992616}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kd {
+ Value { 0.1}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kR {
+ Value { 50.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   k0 {
+ Value { 4.89}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kmax {
+ Value { 300.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   K {
+ Value { 50000.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { binding constant between R and the operator site}
+}
+
+dynetica.entity.Parameter   n {
+ Value { 2.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { Hill coefficient}
+}
+
+dynetica.entity.Parameter   delta {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { scaling factor}
+}
+
+dynetica.entity.Parameter   x {
+ Value { 0.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   kp {
+ Value { 5.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { translation rate}
+}
+
+dynetica.entity.Parameter   dm {
+ Value { 1.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+dynetica.entity.Parameter   tau {
+ Value { 10.0}
+ Min {0.0}
+ Max {1.7976931348623157E308}
+ Annotation { }
+}
+
+
+
+dynetica.reaction.ProgressiveReaction   R_decay{
+  stoichiometry { R ->  } 
+  kinetics { kd * [R] } 
+  X  {725.8273523661741}
+  Y  {121.91395815553233}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   mR_make{
+  stoichiometry {  -> mR } 
+  kinetics { (kmax * delta) / (50.0 + delay([R], tau) ^ 2.0) } 
+  X  {554.023546541396}
+  Y  {301.45708709126694}
+  Annotation {notice the use of delay function here. delay([R], tau) returns the value of [R] at current 
+time - tau. If current time is less than tau, the function returns the initial value of [R] 
+(specified by the user).
+
+This function essentially allows the solution of delay differential equations. Currently, 
+this cannot be readily translated into Matlab.}
+}
+dynetica.reaction.ProgressiveReaction   mR1_make{
+  stoichiometry {  -> mR1 } 
+  kinetics { k0 * delta } 
+  X  {589.4273802201936}
+  Y  {586.4153297324164}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   R1_decay{
+  stoichiometry { R1 ->  } 
+  kinetics { kd * [R1] } 
+  X  {823.4950302046323}
+  Y  {307.7341618454558}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   R_make{
+  stoichiometry {  -> R } 
+  kinetics { kp * [mR] } 
+  X  {305.4591351336115}
+  Y  {145.474118206088}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   mR_decay{
+  stoichiometry { mR ->  } 
+  kinetics { dm * [mR] } 
+  X  {108.3113091587728}
+  Y  {326.40029760966695}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   R1_make{
+  stoichiometry {  -> R1 } 
+  kinetics { kp * [mR1] } 
+  X  {566.1044357499738}
+  Y  {417.18827002037233}
+  Annotation {}
+}
+dynetica.reaction.ProgressiveReaction   mR1_decay{
+  stoichiometry { mR1 ->  } 
+  kinetics { dm * [mR1] } 
+  X  {291.65068576835046}
+  Y  {535.0919345719057}
+  Annotation {}
+}
+dynetica.gui.visualization.NetworkLayout   Layout {
+	 width { 970}
+	 height {631}
+	 arrowSize {8.0}
+	 margin {20}
+	 lineWidth {0.5}
+}
+
+}
+
